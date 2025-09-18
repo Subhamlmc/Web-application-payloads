@@ -36,3 +36,17 @@ document.form[0].submit();
 }
      </script>
 Step3)Check for email change
+
+
+---------------------CSRF where Referer validation depends on header being present----------------------------------------
+Step1)Generate CSRF poc
+Step2)Insert  the following header after <head> 
+     ----<meta name="referrer" content="no-referrer">
+
+---------------------CSRF with broker refer validation----------------------------------------
+Step1)In the request section, add one header : Referrer:https:hacked.com/?Website-domain-that-is-correct or any value that it accepts
+Step2)Generate Poc
+Step3)Add this portion:<script>    history.pushState("", "", "/?YOUR-LAB-ID.web-security-academy.net")       </script>
+
+
+
