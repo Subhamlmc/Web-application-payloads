@@ -1,1 +1,2 @@
-
+1)Check for http-verb Brute-force via intruder ---> Check if the thing supports PATCH,PUT,DELETE ---> These type of requests can Update the value if the server is misconfigured !!
+                                               ---> If the request after modification responds with Content-type, use Content-type Converter Extension 
