@@ -6,4 +6,8 @@
                                                                  ---> &x=y is added so that if it returns positive response 
                                                                  --->Attempt to truncate the username doing # in url encoded form  
                                                                  --->It might return with "value" not specified (eg:email,field)
+
+3)Check for "#,?" with url encoded if they reflect Invalid Route ---> If they do so, path traversal will exploit them !!
+                                                                 ---> Such as ( ../user ) --> Increase the number of ../../ until you reach api documentation 
+                                                                
                                                                  
