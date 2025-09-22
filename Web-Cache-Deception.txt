@@ -6,3 +6,6 @@ Exploting Path Mapping for web-cache Deception ---> Tamper Some parameter like -
                                                    </script>
                                                --->Visit the URL from victims's account 
                                                --->Click the Link from victim's account and after victim has clicked, go to the link you delivered to the victim 
+
+
+2)Exploting Path Delimiters ---> Use the delimiters list and other steps are same as the first one --> Turn Off URL-encode these characters 
