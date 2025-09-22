@@ -1,0 +1,87 @@
+==============================
+# RESPONSES — examples
+==============================
+
+1. Cache-Control header
+   - Cache-Control: public, max-age=3600
+   - Cache-Control: no-store, no-cache
+
+2. Expires / Pragma headers
+   - Expires: Wed, 25 Sep 2025 12:00:00 GMT
+   - Pragma: no-cache
+
+3. Vary header
+   - Vary: Accept-Encoding
+   - Vary: Cookie
+
+4. Set-Cookie header(s)
+   - Set-Cookie: sessionid=abc123; HttpOnly
+   - Set-Cookie: auth_token=xyz789; Secure; HttpOnly
+
+5. Authorization / Sensitive tokens
+   - Authorization: Bearer eyJhbGciOi...
+   - {"token":"abc123","user":"subham"}
+
+6. User-specific / PII content in body
+   - {"email":"subham@example.com","name":"Subham Lamichhane"}
+   - <div>Account Balance: $1200</div>
+
+7. Status code
+   - 200 OK
+   - 304 Not Modified
+
+8. ETag / Last-Modified
+   - ETag: "5d8c72a5-3c8"
+   - Last-Modified: Tue, 24 Sep 2025 10:00:00 GMT
+
+9. Content-Type / MIME-type
+   - Content-Type: text/html
+   - Content-Type: application/json
+
+10. Edge/CDN headers
+    - X-Cache: HIT from Cloudflare
+    - Age: 1234
+
+==============================
+# REQUESTS — examples
+==============================
+
+1. Cookie header
+   - Cookie: sessionid=abc123
+   - Cookie: auth_token=xyz789
+
+2. Authorization header
+   - Authorization: Bearer eyJhbGciOi...
+   - Authorization: Basic dXNlcjpwYXNz
+
+3. If-None-Match / If-Modified-Since
+   - If-None-Match: "5d8c72a5-3c8"
+   - If-Modified-Since: Tue, 24 Sep 2025 10:00:00 GMT
+
+4. Host header manipulation
+   - Host: example.com
+   - Host: attacker.com
+
+5. Accept / Accept-Encoding
+   - Accept: text/html
+   - Accept-Encoding: gzip, deflate
+
+6. Query parameters / path extensions
+   - /account/profile
+   - /account/profile.html
+
+7. Range / Partial requests
+   - Range: bytes=0-1
+   - Range: bytes=0-100
+
+8. Custom headers
+   - X-Forwarded-Host: attacker.com
+   - X-Original-URL: /account/profile
+
+9. HTTP method
+   - GET /account/profile
+   - POST /account/profile
+
+10. Request origin
+    - From IP 192.168.1.10
+    - From IP 10.0.0.5
