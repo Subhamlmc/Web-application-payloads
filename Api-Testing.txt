@@ -1,2 +1,9 @@
 1)Check for http-verb Brute-force via intruder ---> Check if the thing supports PATCH,PUT,DELETE ---> These type of requests can Update the value if the server is misconfigured !!
                                                ---> If the request after modification responds with Content-type, use Content-type Converter Extension 
+
+
+2)Check for Server-Side Parameter Pollution Type Via PARAM-MINER ---> Example GET /forgot-password?username=admin&x=y 
+                                                                 ---> &x=y is added so that if it returns positive response 
+                                                                 --->Attempt to truncate the username doing # in url encoded form  
+                                                                 --->It might return with "value" not specified (eg:email,field)
+                                                                 
